@@ -1,0 +1,32 @@
+<h5 class="fw-semibold mb-3">🎯 Select or Add User</h5>
+
+<div class="mb-3">
+  <label for="userSelect" class="form-label">Choose User:</label>
+  <select class="form-select" id="userSelect" [(ngModel)]="selectedUserId">
+    <option value="" disabled selected>Select a user</option>
+    <option *ngFor="let user of users" [value]="user._id">
+      {{ user.name }}
+    </option>
+  </select>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <button class="btn btn-primary w-100" (click)="claimPoints()">Claim Points</button>
+</div>
+
+<div *ngIf="claimedMessage" class="alert alert-success text-center">
+  {{ claimedMessage }}
+</div>
+
+<hr />
+
+<h6 class="fw-bold mt-4">➕ Add New User</h6>
+<div class="input-group">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter user name"
+    [(ngModel)]="newUserName"
+  />
+  <button class="btn btn-success" (click)="addUser()">Add</button>
+</div>
